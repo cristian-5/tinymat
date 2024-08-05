@@ -1,0 +1,29 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #000;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	justify-items: center;
+	color: #fff;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+body {
+	padding: 40px;
+}
+
+pre,
+#code {
+	font-family: monospace;
+	font-size: 15px;
+	color: #fff;
+	background: #000;
+	border: none;
+	outline: none;
+	resize: none;
+}

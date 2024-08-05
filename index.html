@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tinymat</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="math.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
+</head>
+<body>
+	<canvas id="box"></canvas>
+	<div>
+		<pre>(x, y, t) =></pre>
+		<textarea id="code" maxlength="64" rows="4" cols="32" oninput="update()">[cos(y*t),sin(x*t),1,sin(t)]</textarea>
+	</div>
+	<script type="text/javascript" src="sketch.js"></script>
+	<script type="text/javascript">update();</script>
+</body>
