@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">⚪️</text></svg>'>
 	<title>tinymat</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="vanilla-toast.css">
 	<script type="text/javascript" src="math.js"></script>
+	<script type="text/javascript" src="vanilla-toast.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
 </head>
 <body>
-	<canvas id="box"></canvas>
-	<div>
-		<pre>(x, y, t) =></pre>
-		<textarea id="code" maxlength="64" rows="4" cols="32" oninput="update()">[cos(y*t),sin(x*t),1,sin(t)]</textarea>
-	</div>
+	<main>
+		<canvas id="box"></canvas>
+		<div id="monaco"></div>
+		<h4 id="status">ⵊ <span id="selected">0</span> │ # <span id="length">0</span></h4>
+		<ul>
+			<li onclick="minify()">minify</li>
+			<li onclick="share()">share</li>
+		</ul>
+	</main>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"
+		integrity="sha256-0SGl1PJNDyJwcV5T+weg2zpEMrh7xvlwO4oXgvZCeZk="
+		crossorigin="anonymous"
+	></script>
+	<script type="module" src="monaco.js"></script>
 	<script type="text/javascript" src="sketch.js"></script>
-	<script type="text/javascript">update();</script>
 </body>
+</html>
