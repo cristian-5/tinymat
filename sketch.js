@@ -53,7 +53,7 @@ function share() {
 	const text = "https://cristian-5.github.io/tinymat/#" + encodeURI(window.editor.getValue());
 	navigator.clipboard.writeText(text);
 	vanillaToast.show(
-		'<a href="https://github.com/cristian-5/tinymat" tartget="_blank">👀 Link copied 📋. Leave a ⭐️ on 🐙</a>',
+		'<a href="https://github.com/cristian-5/tinymat" target="_blank">👀 Link copied 📋. Leave a ⭐️ on 🐙</a>',
 		{ duration: 5000, fadeDuration: 500 }
 	);
 }
