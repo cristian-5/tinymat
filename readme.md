@@ -5,12 +5,11 @@ A tiny ⛳️ code golfing matrix platform made with ❤️ and dedication.
 
 > 🌈 **Ab_se the sh\*t out of js syntax and make your trip come to life!**
 
-> The parameters can be: `x` `y` for integer indices, `t` for time in
-> seconds, `i` for a single index, `u` `v` for uv coordinates.\
-> The return value can be a number that indicates a grayscale\
-> value, `[grayscale, size]`, `[r, g, b]`, or `[x, y, z, size]`.\
-> Color values and sizes are in the range of `0` to `1`.\
-> Functions can operate on arrays or variardic arguments.
+The parameters can be: `x` `y` for integer indices, `t` for time in
+seconds, `i` for a single index, `u` `v` for uv coordinates.\
+The return value can be a number that indicates a grayscale value, `[grayscale, size]`, `[r, g, b]`, or `[x, y, z, size]`.\
+Color values and sizes are in the range of `0` to `1`.\
+Functions can operate on arrays or variardic arguments.
 
 ### tiny examples
 
