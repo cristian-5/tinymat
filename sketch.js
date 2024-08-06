@@ -42,6 +42,7 @@ function selection() {
 }
 
 function update() {
+	window.history.pushState("", document.title, window.location.pathname + window.location.search);
 	const value = window.editor.getValue().replace(/\^/g, "**").replace(/\$/g, "^");
 	localStorage.setItem("code", window.editor.getValue());
 	try { f = eval(window.editor.getValue()); } catch { }

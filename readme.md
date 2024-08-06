@@ -1,7 +1,9 @@
 
 # ⚪️ tinymat
 
-A tiny code golfing matrix platform made with ❤️ and dedication.
+A tiny ⛳️ code golfing matrix platform made with ❤️ and dedication.
+
+> 🌈 **Ab_se the sh\*t out of js syntax and make your trip come to life!**
 
 > The parameters can be: `x` `y` for integer indices, `t` for time in
 > seconds, `i` for a single index, `u` `v` for uv coordinates.\
