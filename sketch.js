@@ -2,7 +2,7 @@
 const CELLS = 16, RADIUS = 10, SPACING = 2;
 const SIZE = CELLS * RADIUS * 2 + (CELLS - 1) * SPACING;
 
-let f = () => 0, t = new Date().getTime();
+let f = () => 0, start = Date.now(), textparams = [];
 
 function setup() {
 	createCanvas(SIZE, SIZE, document.getElementById("box"));
@@ -15,10 +15,10 @@ function draw() {
 	for (let i = 0; i < CELLS; i++) {
 		for (let j = 0; j < CELLS; j++) {
 			let diameter = RADIUS * 2;
-			const x = i * (diameter + SPACING) + RADIUS;
-			const y = j * (diameter + SPACING) + RADIUS;
-			let value;
-			try { value = f(i, j, (new Date().getTime() - t) / 1000); }
+			const x = j * (diameter + SPACING) + RADIUS;
+			const y = i * (diameter + SPACING) + RADIUS;
+			let value, t = (Date.now() - start) / 1000;
+			try { value = f(...order(i, j, t, x / SIZE, 1 - y / SIZE)); }
 			catch { value = 0; }
 			try {
 				if (Array.isArray(value)) {
@@ -36,6 +36,28 @@ function draw() {
 	}
 }
 
+/// orders parameters based on the order given by textparams
+function order(i, j, t, u, v) {
+	let result = textparams.slice();
+	for (let k = 0; k < result.length; k++) {
+		const x = u - 0.5, y = v - 0.5;
+		switch (result[k]) {
+			case "n": result[k] = i * CELLS + j; break;
+			case "x": result[k] = x; break; // cartesian x (-0.5...+0.5)
+			case "y": result[k] = y; break; // cartesian y (-0.5...+0.5)
+			case "t": result[k] = t; break; // time in seconds
+			case "i": result[k] = i; break; // screen y integer index
+			case "j": result[k] = j; break; // screen x integer index
+			case "u": result[k] = u; break; // 3rd quadrant x (0...1)
+			case "v": result[k] = v; break; // 3rd quadrant y (0...1)
+			case "r": result[k] = sqrt(x * x + y * y); break; 
+			case "p": result[k] = atan2(y, x); break;
+			default:  result[k] = 0;
+		}
+	}
+	return result;
+}
+
 function selection() {
 	const text = window.editor.getModel().getValueInRange(window.editor.getSelection());
 	document.getElementById("selected").innerText = text.length;
@@ -44,8 +66,16 @@ function selection() {
 function update() {
 	window.history.pushState("", document.title, window.location.pathname + window.location.search);
 	const value = window.editor.getValue().replace(/\^/g, "**").replace(/\$/g, "^");
-	localStorage.setItem("code", window.editor.getValue());
-	try { f = eval(window.editor.getValue()); } catch { }
+	localStorage.setItem("code", value);
+	try {
+		f = eval(value);
+		// run parameter analisys only when the function is valid
+		textparams = value.match(/^\(?.*?\)?\s*=>/);
+		if (textparams !== null) {
+			textparams = textparams[0].replace(/\s/g, "").replace(/^\(/, "").replace(/\)?=>/, "");
+			textparams = textparams.split(",");
+		} else textparams = [];
+	} catch { }
 	document.getElementById("length").innerText = value.length;
 }
 

@@ -5,26 +5,35 @@ A tiny ⛳️ code golfing matrix platform made with ❤️ and dedication.
 
 > 🌈 **Ab_se the sh\*t out of js syntax and make your trip come to life!**
 
-The parameters can be: `x` `y` for integer indices, `t` for time in
-seconds, `i` for a single index, `u` `v` for uv coordinates.\
-The return value can be a number that indicates a grayscale value, `[grayscale, size]`, `[r, g, b]`, or `[x, y, z, size]`.\
-Color values and sizes are in the range of `0` to `1`.\
-Functions can operate on arrays or variardic arguments.
+### parameters
+
+The parameters can be used in any order and combination.\
+Invalid parameter names will evaluate to `0`.
+
+- `n`: the number of the bubble being rendered.
+- `t`: the time in seconds.
+- `x`, `y`: for cartesian coordinates between `-0.5` and `+0.5`.
+- `j`, `i`: for the screen indices of the bubble in the matrix.
+- `u`, `v`: for the cartesian 3rd quadrant coordinates, between `0` and `1`.
+- `r`, `p`: for the polar coordinates centered.
+
+### return value
+
+- `[grayscale]`: a grayscale value between `0` and `1`.
+- `[grayscale, size]`: a grayscale value and size between `0` and `1`.
+- `[r, g, b]`: color values between `0` and `1`.
+- `[r, g, b, size]`: color values and size between `0` and `1`.
 
 ### tiny examples
 
 ```js
-(x, y, t) => [cos(y*t),sin(x*t),1,sin(t)]
+(j,i,t)=>[cos(i*t),sin(j*t),1,sin(t)]
 ```
 
 ```js
-(x, y, t) => -sin(y*t)
+(x,y,t)=>norm(x,y,0,t)
 ```
 
 ```js
-(x, y, t) => [cos(t*x)-sin(y*t),sin(t)]
-```
-
-```js
-(x, y, t) => norm(sin(x)*norm(t),norm(t+x),norm(t*y),sin(t*(y+x)/5))
+(j,i,t)=>[cos(t*j)-sin(i*t),sin(t)]
 ```

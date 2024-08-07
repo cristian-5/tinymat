@@ -113,7 +113,7 @@ require([ "vs/editor/editor.main" ], function() {
 	let hash = "";
 	if (window.location.hash.length > 1) hash = decodeURI(window.location.hash.substring(1));
 	window.editor = monaco.editor.create(document.getElementById("monaco"), {
-		value: hash || localStorage.getItem("code") || "(x,y,t)=>norm(sin(x)*norm(t),norm(t+x),norm(t*y),sin(t*(y+x)/5))",
+		value: hash || localStorage.getItem("code") || "(j,i,t)=>norm(sin(j)*norm(t),norm(t+j),norm(t*i),sin(t*(i+j)/5))",
 		language: "golfjs",
 		codeLens: false,
 		cursorStyle: "line",

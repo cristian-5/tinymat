@@ -18,6 +18,7 @@ const log10 = (...x) => x.flat().map(Math.log10);
 const   max = (...x) => Math.max(...x.flat());
 const   min = (...x) => Math.min(...x.flat());
 const   mix = (a, b, t) => a * (1 - t) + b * t;
+const  lerp = mix;
 const noise = Math.random;
 const   pow = Math.pow;
 const round = (...x) => x.flat().map(Math.round);
@@ -43,6 +44,9 @@ const   sin = (...x) => x.flat().map(Math.sin);
 const  sinh = (...x) => x.flat().map(Math.sinh);
 const   tan = (...x) => x.flat().map(Math.tan);
 const  tanh = (...x) => x.flat().map(Math.tanh);
+const cotan = (...x) => x.flat().map(x => 1 / Math.tan(x));
+const   sec = (...x) => x.flat().map(x => 1 / Math.cos(x));
+const cosec = (...x) => x.flat().map(x => 1 / Math.sin(x));
 const atan2 = Math.atan2;
 
 const norm = (...x) => x.flat().map(x => sin(x) * 0.5 + 0.5);
