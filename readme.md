@@ -24,6 +24,25 @@ Invalid parameter names will evaluate to `0`.
 - `[r, g, b]`: color values between `0` and `1`.
 - `[r, g, b, size]`: color values and size between `0` and `1`.
 
+### functions
+
+JavaScript math functions can be used in the code without the `Math.` prefix,
+and most of them also accept arrays and variadic arguments. In addition to
+that, we added the following functions and shorthands:
+
+```js
+norm = x => sin(x) * 0.5 + 0.5
+lerp = mix = (a, b, t) => a * (1 - t) + b * t
+noise = rand = random = Math.random
+step = (a, x) => x < a ? 0 : 1
+smoothstep = (a, b, t) => mix(a, b, t * t * (3 - 2 * t))
+deg = rad => rad * 180 / pi
+rad = deg => deg * pi / 180
+clamp = (x, a, b) => x < a ? a : x > b ? b : x
+isinf = x => !isFinite(x)
+isnan = x => isNaN(x)
+```
+
 ### tiny examples
 
 ```js

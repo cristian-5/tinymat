@@ -19,6 +19,8 @@ const   min = (...x) => Math.min(...x.flat());
 const   mix = (a, b, t) => a * (1 - t) + b * t;
 const  lerp = mix;
 const noise = Math.random;
+const random = noise;
+const  rand = noise;
 const   pow = Math.pow;
 const round = (...x) => x.flat().map(Math.round);
 const  sign = (...x) => x.flat().map(Math.sign);
