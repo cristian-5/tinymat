@@ -47,5 +47,6 @@ const cotan = (...x) => x.flat().map(x => 1 / Math.tan(x));
 const   sec = (...x) => x.flat().map(x => 1 / Math.cos(x));
 const cosec = (...x) => x.flat().map(x => 1 / Math.sin(x));
 const atan2 = Math.atan2;
+const hypot = (...x) => Math.hypot(...x.flat());
 
 const norm = (...x) => x.flat().map(x => sin(x) * 0.5 + 0.5);
