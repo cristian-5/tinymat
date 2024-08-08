@@ -37,3 +37,7 @@ Invalid parameter names will evaluate to `0`.
 ```js
 (j,i,t)=>[cos(t*j)-sin(i*t),sin(t)]
 ```
+
+```js
+(u,v,t)=>[cotan(u+v*t,u^v,v*u*t),sqrt(tan(t*u*v))]
+```

@@ -65,7 +65,7 @@ function selection() {
 
 function update() {
 	window.history.pushState("", document.title, window.location.pathname + window.location.search);
-	const value = window.editor.getValue().replace(/\^/g, "**").replace(/\$/g, "^");
+	const value = window.editor.getValue().replace(/\^/g, "**").replace(/\$/g, "^").replace(/°/g, "*radian");
 	localStorage.setItem("code", value);
 	try {
 		f = eval(value);

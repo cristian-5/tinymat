@@ -1,8 +1,7 @@
 
 // explicit math functions
 
-const pi = Math.PI;
-const e = Math.E;
+const  pi = Math.PI, radian = pi / 180, e = Math.E;
 
 const   abs = (...x) => x.flat().map(Math.abs);
 const  ceil = (...x) => x.flat().map(Math.ceil);

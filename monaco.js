@@ -74,7 +74,7 @@ require([ "vs/editor/editor.main" ], function() {
 			"pow", "round", "sign", "smoothstep", "sqrt", "step", "trunc",
 			"acos", "acosh", "asin", "asinh", "atan", "atanh", "cos", "cosh",
 			"degrees", "deg", "radians", "rad", "sin", "sinh", "tan", "tanh",
-			"atan2", "norm"
+			"atan2", "norm", "lerp", "cotan", "sec", "cosec"
 		],
 		tokenizer: {
 			root: [
