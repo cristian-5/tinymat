@@ -27,21 +27,9 @@ Invalid parameter names will evaluate to `0`.
 ### functions
 
 JavaScript math functions can be used in the code without the `Math.` prefix,
-and most of them also accept arrays and variadic arguments. In addition to
-that, we added the following functions and shorthands:
-
-```js
-norm = x => sin(x) * 0.5 + 0.5
-lerp = mix = (a, b, t) => a * (1 - t) + b * t
-noise = rand = random = Math.random
-step = (a, x) => x < a ? 0 : 1
-smoothstep = (a, b, t) => mix(a, b, t * t * (3 - 2 * t))
-deg = rad => rad * 180 / pi
-rad = deg => deg * pi / 180
-clamp = (x, a, b) => x < a ? a : x > b ? b : x
-isinf = x => !isFinite(x)
-isnan = x => isNaN(x)
-```
+and most of them also accept arrays or variadic arguments. In addition to
+that, we added the following functions: `norm`, `mix`, `noise`, `clamp`,
+`step`, `smoothstep`, `deg`, `rad`, `isinf`, `isnan`.
 
 ### tiny examples
 
