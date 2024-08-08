@@ -11,10 +11,15 @@ body {
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
+	font-family: Menlo, Monaco, "Courier New", monospace;
 }
 
-body {
-	padding: 40px;
+body { padding: 40px; }
+
+h1 {
+	font-size: 20px;
+	text-align: center;
+    margin: 50px 20px;
 }
 
 #monaco {
@@ -47,6 +52,11 @@ ul li {
 	cursor: pointer;
 }
 
-ul li:hover {
-	color: #fff;
+ul li:hover, ul li:hover a, a:hover {
+	color: #fff !important;
+}
+
+a, a:visited, a:active {
+	color: #888;
+	text-decoration: none;
 }
