@@ -1,8 +1,9 @@
 
 const CELLS = 16, RADIUS = 10, SPACING = 2;
 const SIZE = CELLS * RADIUS * 2 + (CELLS - 1) * SPACING;
+const START = Date.now();
 
-let f = () => 0, start = Date.now(), textparams = [];
+let f = () => 0, textparams = [];
 
 function setup() {
 	createCanvas(SIZE, SIZE, document.getElementById("box"));
@@ -17,8 +18,8 @@ function draw() {
 			let diameter = RADIUS * 2;
 			const x = j * (diameter + SPACING) + RADIUS;
 			const y = i * (diameter + SPACING) + RADIUS;
-			let value, t = (Date.now() - start) / 1000;
-			try { value = f(...order(i, j, t, x / SIZE, 1 - y / SIZE)); }
+			let value;
+			try { value = f(...order(i, j, x / SIZE, 1 - y / SIZE)); }
 			catch { value = 0; }
 			try {
 				if (Array.isArray(value)) {
@@ -37,7 +38,7 @@ function draw() {
 }
 
 /// orders parameters based on the order given by textparams
-function order(i, j, t, u, v) {
+function order(i, j, u, v) {
 	let result = textparams.slice();
 	for (let k = 0; k < result.length; k++) {
 		const x = u - 0.5, y = v - 0.5;
@@ -45,7 +46,9 @@ function order(i, j, t, u, v) {
 			case "n": result[k] = i * CELLS + j; break;
 			case "x": result[k] = x; break; // cartesian x (-0.5...+0.5)
 			case "y": result[k] = y; break; // cartesian y (-0.5...+0.5)
-			case "t": result[k] = t; break; // time in seconds
+			case "t": result[k] = (Date.now() - START) / 1000; break; // time in seconds
+			case "s": result[k] = START / 1000; break; // start time in seconds
+			case "d": result[k] = Date.now() / 1000; break; // current date in seconds
 			case "i": result[k] = i; break; // screen y integer index
 			case "j": result[k] = j; break; // screen x integer index
 			case "u": result[k] = u; break; // 3rd quadrant x (0...1)
@@ -66,6 +69,22 @@ function selection() {
 function update() {
 	window.history.pushState("", document.title, window.location.pathname + window.location.search);
 	const value = window.editor.getValue().replace(/\^/g, "**").replace(/\$/g, "^").replace(/°/g, "*radian");
+	const unsafe = [
+		"self", "this", "document", "window", "localStorage", "arguments",
+		"sessionStorage", "indexedDB", "fetch", "XMLHttpRequest", "class",
+		"eval", "Function", "setTimeout", "setInterval", "Document", "frame",
+		"requestAnimationFrame", "global", "await", "async", "undefined", "NaN",
+		"globalThis", "function", "import", "export", "module", "Window",
+		"navigator", "WebAssembly", "Intl", "new", "Object", "Array", "String",
+	];
+	for (const word of unsafe)
+		if (value.includes(word)) {
+			vanillaToast.show(
+				"🔴 that's not allowed, you naughty 👿",
+				{ duration: 5000, fadeDuration: 500 }
+			);
+			return;
+		}
 	localStorage.setItem("code", value);
 	try {
 		f = eval(value);
