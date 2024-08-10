@@ -32,7 +32,7 @@ JavaScript math functions can be used in the code without the `Math.` prefix,
 and most of them also accept arrays or variadic arguments.
 The `^` operator now serves as the power operator, while `$` is promoted to xor.
 In addition to that, we added the following functions: `norm`, `mix`, `noise`,
-`clamp`, `step`, `smoothstep`, `deg`, `rad`, `isinf`, `isnan`.
+`clamp`, `step`, `smooth`, `deg`, `rad`.
 
 ### tiny examples
 

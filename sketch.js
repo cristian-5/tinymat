@@ -76,15 +76,22 @@ function update() {
 		"requestAnimationFrame", "global", "await", "async", "undefined", "NaN",
 		"globalThis", "function", "import", "export", "module", "Window",
 		"navigator", "WebAssembly", "Intl", "new", "Object", "Array", "String",
+		"constructor", "prototype", "Number", "Boolean", "Date", "RegExp",
+		"Symbol", "static", "bind", "call", "apply", "JSON", "Promise",
+		"console", "prompt", "alert", "confirm", "open", "close", "postMessage",
+		"decodeURI", "decodeURIComponent", "encodeURI", "encodeURIComponent",
+		"unescape", "Reflect", "Proxy", "FinalizationRegistry", "let", "const",
+		"var", "delete", "void", "typeof", "instanceof", "yield", "return",
+		"break", "continue", "throw", "try", "catch", "finally", "switch",
+		"case", "default", "else", "for", "while"
 	];
+	const naughty = word => vanillaToast.show(
+		`🔴 "${word}" is not allowed, you naughty 👿`,
+		{ duration: 5000, fadeDuration: 500 }
+	);
 	for (const word of unsafe)
-		if (value.includes(word)) {
-			vanillaToast.show(
-				"🔴 that's not allowed, you naughty 👿",
-				{ duration: 5000, fadeDuration: 500 }
-			);
-			return;
-		}
+		if (value.includes(word)) { naughty(word); return; }
+	if (/[A-Za-z_]\.[A-Za-z_]/.test(value)) { naughty("OOP"); return; }
 	localStorage.setItem("code", value);
 	try {
 		f = eval(value);

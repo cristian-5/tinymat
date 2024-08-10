@@ -1,12 +1,10 @@
 html,
 body {
+	top: 0; bottom: 0;
+	left: 0; right: 0;
 	padding: 0;
 	margin: 0;
 	background-color: #000;
-	display: grid;
-	justify-content: center;
-	align-items: center;
-	justify-items: center;
 	color: #fff;
 	height: 100%;
 	width: 100%;
@@ -14,7 +12,17 @@ body {
 	font-family: Menlo, Monaco, "Courier New", monospace;
 }
 
-body { padding: 40px; }
+.monaco-editor .suggest-widget {
+	width: 128px !important;
+}
+
+body {
+	padding: 40px;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	justify-items: center;
+}
 
 h1 {
 	font-size: 20px;
